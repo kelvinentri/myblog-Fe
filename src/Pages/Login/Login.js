@@ -3,7 +3,7 @@ import LoginBox from '../../Components/LoginBox/LoginBox'
 
 function Login() {
   return (
-    <div><LoginBox/></div>
+    <div className='vh-100 d-flex justify-content-center align-items-center'><LoginBox/></div>
   )
 }
 

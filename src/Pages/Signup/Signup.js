@@ -3,7 +3,7 @@ import SignupBox from '../../Components/SIgnupBox/SignupBox'
 
 function Signup() {
   return (
-    <div><SignupBox/></div>
+    <div  className='vh-100 d-flex justify-content-center align-items-center'><SignupBox/></div>
   )
 }
 
