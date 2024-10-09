@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RootLayout() {
   return (
-    <div className="main-container bg-danger">
+    <div className="main-container">
       <nav>
         <div>
      <NavBar/>
@@ -16,10 +16,10 @@ function RootLayout() {
       <main>
         <Outlet/>
       </main>
-
+{/* 
       <footer>
         <h2>footer</h2>
-      </footer>
+      </footer> */}
     </div>
   );
 }
