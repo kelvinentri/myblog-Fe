@@ -2,19 +2,27 @@
 
 import React, { useState } from 'react'
 import '../LoginBox/Login.css'
+import { AxiosInstance } from '../../Config/AxiosInsatnce';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function SignupBox() {
       const [signupData, setSignupData] = useState({});
 //   const dispatch = useDispatch();
-//   const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
 
   const handleSignUp = (event) => {
-
+AxiosInstance.post(`${process.env.REACT_APP_API_URL}/users/signup`,signupData).then((res)=>{
+  navigate('/login')
+})
+.catch(err=>{
+  console.log(err);
+  
+})
   };
   const handleChange=(e)=>{
-
+setSignupData({...signupData,[e.target.name]:e.target.value})
   }
   return (
     <div className="login-container">

@@ -15,7 +15,7 @@ function App() {
 
         <Route path="/*" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path="countries" element={<Home />}></Route>
+          <Route path="create-post" element={<Home />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
