@@ -17,9 +17,9 @@ function RootLayout() {
         <Outlet/>
       </main>
 
-      <footer>
+      {/* <footer>
         <h2>footer</h2>
-      </footer>
+      </footer> */}
     </div>
   );
 }

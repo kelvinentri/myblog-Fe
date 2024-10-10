@@ -1,32 +1,41 @@
 
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../LoginBox/Login.css'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
 function SignupBox() {
       const [signupData, setSignupData] = useState({});
 //   const dispatch = useDispatch();
-//   const navigate = useNavigate(); 
+  const navigate = useNavigate(); 
 
   const handleSignUp = (event) => {
-
+// validations 
+axios.post('http://localhost:8080/users/signup',signupData,{headers:{'Authorization':"djfdjrjg"}}).then((res)=>{
+navigate('/login')
+})
+.catch((err)=>{
+  console.log(err);
+  
+})
   };
   const handleChange=(e)=>{
-
+    setSignupData({...signupData,[e.target.name]:e.target.value})
   }
   return (
     <div className="login-container">
       <h2>Login</h2>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="fullName">Full Name</label>
           <input
             type="text"
-            id="username"
-            name="username"
+            id="fullName"
+            name="fullname"
             className="form-control"
-            value={signupData.username}
+            value={signupData.fullName}
             onChange={handleChange}
             required
           />

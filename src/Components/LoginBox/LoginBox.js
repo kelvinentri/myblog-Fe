@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Login.css'
+import axios from 'axios';
 
 function LoginBox() {
         const [loginData, setloginData] = useState({});
@@ -7,22 +8,30 @@ function LoginBox() {
   //   const navigate = useNavigate(); 
   
     const handleLogin = (event) => {
-  
+  axios({
+    url:"http://localhost:8080/users/login",
+    method:"post",
+    data:loginData
+  }).then((res)=>{
+    console.log(res);
+    
+  })
+  .catch((err)=>{})
     };
     const handleChange=(e)=>{
-  
+      setloginData({...loginData,[e.target.name]:e.target.value})
     }
     return (
       <div className="login-container">
         <h2>Login</h2>
           <div className="form-group">
-            <label htmlFor="username">Username</label>
+            <label htmlFor="email">email</label>
             <input
               type="text"
-              id="username"
-              name="username"
+              id="email"
+              name="email"
               className="form-control"
-              value={loginData.username}
+              value={loginData.email}
               onChange={handleChange}
               required
             />
