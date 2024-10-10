@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import WritingPad from "../../Components/WritingPad/WritingPad";
 import { AxiosInstance } from "../../Config/AxiosInsatnce";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost() {
   const [value, setValue] = useState("");
   const [imageFile, setImageFile] = useState(null);
+  const naviagate=useNavigate()
   const handleFile = (e) => {
     setImageFile(e.target.files[0]);
   };
@@ -25,14 +27,14 @@ function CreatePost() {
           });
         }
  AxiosInstance({
-    url:'/users/createPost',
+    url:'/posts/createPost',
     method:'post',
     data:{
         text:value,
         image:filePath.data
     }
  }).then((res)=>{
-
+  naviagate('/')
  })
  .catch(err=>{
     console.log(err);
