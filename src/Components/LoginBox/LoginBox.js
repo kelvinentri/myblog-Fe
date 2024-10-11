@@ -12,7 +12,7 @@ function LoginBox() {
         AxiosInstance.post(`${process.env.REACT_APP_API_URL}/users/login`,loginData).then((res)=>{
 if(res.data.token){
     localStorage.setItem('token', res.data.token)
-    navigate('/')
+    navigate('/1')
 }
         })
         .catch(err=>{
