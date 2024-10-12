@@ -1,23 +1,31 @@
 import Pagination from 'react-bootstrap/Pagination';
 
-function PaginationBox({nextPage, pageNo,maxPageNo}) {
-  console.log(maxPageNo);
+function PaginationBox({ nextPage, pageNo, maxPageNo }) {
+  const startPage = Math.max(1, pageNo - 2);
+  const endPage = Math.min(maxPageNo, pageNo + 2);
+  const pages = [];
+
+  for (let i = startPage; i <= endPage; i++) {
+    pages.push(
+      <Pagination.Item key={i} active={i === pageNo} onClick={() => nextPage(i)}>
+        {i}
+      </Pagination.Item>
+    );
+  }
 
   return (
     <Pagination>
-      <Pagination.First onClick={()=>nextPage(1)} />
-      <Pagination.Prev onClick={()=>nextPage(pageNo-1)} />
-      <Pagination.Ellipsis />
+      <Pagination.First onClick={() => nextPage(1)} disabled={pageNo === 1} />
+      <Pagination.Prev onClick={() => nextPage(pageNo - 1)} disabled={pageNo === 1} />
 
-  {  pageNo>=3 &&  <Pagination.Item onClick={()=>nextPage(pageNo-2)}>{pageNo-2}</Pagination.Item>}
-    {  pageNo>=2 && <Pagination.Item onClick={()=>nextPage(pageNo-1)}>{pageNo-1}</Pagination.Item>}
-      <Pagination.Item onClick={()=>nextPage(pageNo)} active>{pageNo}</Pagination.Item>
-    { pageNo < maxPageNo && <Pagination.Item onClick={()=>nextPage(pageNo+1)}>{pageNo+1}</Pagination.Item>}
-{     pageNo< maxPageNo &&  <Pagination.Item onClick={()=>nextPage(pageNo+2)} >{pageNo+2}</Pagination.Item>}
+      {startPage > 1 && <Pagination.Ellipsis />}
+      
+      {pages}
 
-      <Pagination.Ellipsis />
-      <Pagination.Next onClick={()=>{pageNo < maxPageNo &&  nextPage(pageNo+1)}}  />
-      <Pagination.Last  onClick={()=>nextPage(maxPageNo)} />
+      {endPage < maxPageNo && <Pagination.Ellipsis />}
+
+      <Pagination.Next onClick={() => nextPage(pageNo + 1)} disabled={pageNo === maxPageNo} />
+      <Pagination.Last onClick={() => nextPage(maxPageNo)} disabled={pageNo === maxPageNo} />
     </Pagination>
   );
 }
