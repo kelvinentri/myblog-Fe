@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import './Login.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function LoginBox() {
         const [loginData, setloginData] = useState({});
   //   const dispatch = useDispatch();
-  //   const navigate = useNavigate(); 
+    const navigate = useNavigate(); 
   
     const handleLogin = (event) => {
   axios({
@@ -13,8 +14,9 @@ function LoginBox() {
     method:"post",
     data:loginData
   }).then((res)=>{
+    localStorage.setItem("token",res.data.token)
+    navigate('/')
     console.log(res);
-    
   })
   .catch((err)=>{})
     };
