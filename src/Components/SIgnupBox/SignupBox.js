@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import '../LoginBox/Login.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AxiosInstance } from '../../config/axiosConfig';
 
 
 
@@ -14,7 +15,7 @@ function SignupBox() {
 
   const handleSignUp = (event) => {
 // validations 
-axios.post('http://localhost:8080/users/signup',signupData,{headers:{'Authorization':"djfdjrjg"}}).then((res)=>{
+AxiosInstance.post('/users/signup',signupData).then((res)=>{
 navigate('/login')
 })
 .catch((err)=>{

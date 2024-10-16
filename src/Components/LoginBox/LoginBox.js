@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Login.css'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { AxiosInstance } from '../../config/axiosConfig';
 
 function LoginBox() {
         const [loginData, setloginData] = useState({});
@@ -9,8 +10,8 @@ function LoginBox() {
     const navigate = useNavigate(); 
   
     const handleLogin = (event) => {
-  axios({
-    url:"http://localhost:8080/users/login",
+      AxiosInstance({
+    url:"/users/login",
     method:"post",
     data:loginData
   }).then((res)=>{
