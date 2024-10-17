@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function RootLayout() {
   return (
-    <div className="main-container bg-danger">
+    <div className="main-container ">
       <nav>
         <div>
      <NavBar/>

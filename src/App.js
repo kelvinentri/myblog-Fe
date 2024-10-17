@@ -6,6 +6,7 @@ import Signup from "./Pages/Signup/Signup";
 import RootLayout from "./RootLayout/RootLayout";
 import Home from "./Pages/Home/Home";
 import { Auth, AvoidLogin } from "./FeAuth/Auth";
+import CreatePost from "./Pages/CreatePost/CreatePost";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
         <Route element={<Auth />}>
           <Route path="/*" element={<RootLayout />}>
             <Route index element={<Home />} />
-            {/* <Route path="countries" element={<Home />}></Route> */}
+            <Route path="create-post" element={<CreatePost />}></Route>
           </Route>
         </Route>
       </Routes>
