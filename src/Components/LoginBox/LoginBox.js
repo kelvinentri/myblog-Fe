@@ -17,7 +17,6 @@ function LoginBox() {
   }).then((res)=>{
     localStorage.setItem("token",res.data.token)
     navigate('/')
-    console.log(res);
   })
   .catch((err)=>{})
     };

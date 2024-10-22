@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
-function WritingPad({value,setValue, theme}) {
+function WritingPad({value,setValue, theme,readOnly}) {
 
   return (
     <div>
@@ -10,8 +10,9 @@ function WritingPad({value,setValue, theme}) {
          <ReactQuill
         className=""
         theme={theme}
-        value={value}
-        onChange={(value) => setValue(value)}
+        value={value.slice(0,300)}
+        readOnly={readOnly}
+        onChange={setValue}
       />
     </div>
   )

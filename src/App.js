@@ -20,6 +20,7 @@ function App() {
         <Route element={<Auth />}>
           <Route path="/*" element={<RootLayout />}>
             <Route index element={<Home />} />
+            <Route path=":pageNo" element={<Home />} />
             <Route path="create-post" element={<CreatePost />}></Route>
           </Route>
         </Route>

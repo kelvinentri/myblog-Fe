@@ -1,19 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import WritingPad from '../WritingPad/WritingPad';
 
-function Cards({book}) {
-    console.log(book);
+function Cards({post}) {
     
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" className='w-100 h-100'  src={book?.thumbnailUrl} />
+      <Card.Img variant="top" className='w-100 h-100'  src={process.env.REACT_APP_API_BASE_URL+"/"+post?.imagePath} />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+        <WritingPad value={post.content} readOnly={true} theme={'bubble'}/>
+          
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
   );
